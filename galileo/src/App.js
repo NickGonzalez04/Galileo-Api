@@ -4,6 +4,7 @@ import './App.css';
 
 // Components
 import Login from "./components/login"
+import LendingDash from "./components/LendingDash"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           Learn React
         </a>
         <Login />
+       <LendingDash />
       </header>
     </div>
   );
