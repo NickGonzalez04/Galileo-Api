@@ -9,20 +9,26 @@ import './App.css';
 
 function App() {
 
-  useEffect(()=> {
+  useEffect(() => {
     console.log('console log')
-    axios.post('https://sandbox.galileo-ft.com/instant/v1/login',{ 
-    username:"RLfPLRtyD8cK",
-    password:"Y2AQ0hEh307UzG6RxWLa"
-  },{ headers:{
-    'Content-Type': 'application/json', 
-    'Cookie': 'f5avraaaaaaaaaaaaaaaa_session_=CMGPGGGHFBDHHKCCHMOIDGBHOEAKEGBKFEDIFHLDOEFFPINMKHDCAEHOHJHLJMELLJODBFOHLHBBJIPOPLIAIOLGHBEDNDFIEDJJKENJICOHLLMNJEPJIHHAAPLKLAHG; TS012d9947=012fd6b128e3f8ef7758972c1cb20ccb8cf95899b5a9c083662d0a743b4819afa96399b8b7f53fa99aa221127090362a36e4dc2ec2'
-}})
-     .then(response => {
-         console.log('here', response);
-     }).catch(error => { console.log('error',error) })
- },[]);
- 
+    try {
+      axios.post(`https://cors-anywhere.herokuapp.com/https://sandbox.galileo-ft.com/instant/v1/login`, {
+        username: "RLfPLRtyD8cK",
+        password: "Y2AQ0hEh307UzG6RxWLa"
+      }, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Cookie': 'f5avraaaaaaaaaaaaaaaa_session_=CMGPGGGHFBDHHKCCHMOIDGBHOEAKEGBKFEDIFHLDOEFFPINMKHDCAEHOHJHLJMELLJODBFOHLHBBJIPOPLIAIOLGHBEDNDFIEDJJKENJICOHLLMNJEPJIHHAAPLKLAHG; TS012d9947=012fd6b128e3f8ef7758972c1cb20ccb8cf95899b5a9c083662d0a743b4819afa96399b8b7f53fa99aa221127090362a36e4dc2ec2'
+        }
+        })
+        .then(response => { console.log('here', response) });
+    }
+    catch (error) {
+      console.log('error', `${error}`)
+    }
+  }, []);
+
 
   return (
     <div className="App">
